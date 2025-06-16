@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 // import {router} from "next/client.js";
 import userRouter from "../server/routes/user/route.js"
+import questionRouter from "../server/routes/question/route.js"
+import topicRouter from "../server/routes/topics/route.js"
 dotenv.config();
 
 const app = express();
@@ -20,6 +22,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/user', userRouter);
+app.use('/api/mcq', questionRouter);
+app.use('/api/topics', topicRouter);
 
 app.listen(port, () => {
     console.log(`Server started on port http://localhost:${port}`);

@@ -22,3 +22,27 @@ model User {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+model MCQ {
+  id        String   @id @default(cuid())
+  question  String
+  optionA   String
+  optionB   String
+  optionC   String
+  optionD   String
+  correct   String
+  topic     Topic    @relation(fields: [topicId], references: [id])
+  topicId   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Topic {
+  id          String   @id
+  name        String
+  description String?
+  // mcqs        MCQ[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  MCQ         MCQ[]
+}
