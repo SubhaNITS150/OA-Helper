@@ -98,4 +98,17 @@ const loginUser = async (req, res) => {
     }
 }
 
-export {getUsers, addUser, loginUser};
+const googleLogin = async (req, res) => {
+    const { token } = req.body;
+
+  try {
+    const user = await verifyGoogleToken(token);
+
+    // Save user to DB here if needed
+    res.status(200).json({ success: true, user });
+  } catch (err) {
+    res.status(401).json({ success: false, message: 'Invalid token' });
+  }
+};
+
+export {getUsers, addUser, loginUser, googleLogin};
