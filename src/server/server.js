@@ -5,6 +5,8 @@ import userRouter from "../server/routes/user/route.js"
 import questionRouter from "../server/routes/question/route.js"
 import topicRouter from "../server/routes/topics/route.js"
 import cors from "cors"
+import analyticsRouter from './routes/analytics/route.js';
+import testRouter from './routes/test/route.js';
 
 dotenv.config();
 
@@ -27,6 +29,8 @@ app.get('/', (req, res) => {
 app.use('/api/user', userRouter);
 app.use('/api/mcq', questionRouter);
 app.use('/api/topics', topicRouter);
+app.use('/api/analytics', analyticsRouter);
+app.use('/api/test', testRouter);
 
 app.listen(port, () => {
     console.log(`Server started on port http://localhost:${port}`);

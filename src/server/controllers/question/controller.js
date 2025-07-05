@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import mcqs from "../../../constants/questions.js";
+import { coding } from "../../../constants/codingquestions.js"
 const prisma = new PrismaClient();
 
 export const addMCQS = async (req, res) => {
@@ -16,6 +17,22 @@ export const addMCQS = async (req, res) => {
     await prisma.$disconnect();
   }
 };
+
+export const addCoding = async (req, res) => {
+  try{
+    const createdCoding = await prisma.codingQuestion.createMany({
+      data: coding,
+      skipDuplicates: true
+    });
+
+    return res.send("Coding Questions Added Successfully");
+  } catch(error){
+    console.log(error);
+    return res.send("An error occured while adding coding questions");
+  } finally {
+    await prisma.$disconnect();
+  }
+}
 
 export const addSingleQuestion = async (req, res) => {
   try {

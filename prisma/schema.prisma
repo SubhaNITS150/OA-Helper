@@ -101,7 +101,6 @@ model TestCodingQuestion {
   updatedAt        DateTime       @updatedAt
 
   @@unique([testId, codingQuestionId])
-
   @@map("test_coding_questions")
 }
 
@@ -127,12 +126,14 @@ model Analytics {
   test   Test   @relation(fields: [testId], references: [id])
   testId String
 
-  totalQuestions Int
-  totalScore     Int
-  noOfCorrect    Int
-  mcqCorrect     Int
-  codingCorrect  Int
-  obtainedScore  Int
+  totalQuestions           Int
+  attemptedQuestions       Int
+  notAttempted             Int
+  totalScore               Int
+  noOfCorrect              Int
+  mcqCorrect               Int
+  codingCorrect            Int
+  obtainedScore            Int
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
