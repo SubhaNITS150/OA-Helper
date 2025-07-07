@@ -8,7 +8,7 @@
     "postinstall": "prisma generate",
     "server": "nodemon src/server/server.js",
     "serve": "node src/server/server.js",
-    "build": "prisma generate && vite build",
+    "build": "prisma generate",
     "start": "node src/server/server.js",
     "lint": "next lint"
   },
