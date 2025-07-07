@@ -31,10 +31,9 @@ export const postAnalytics = async(req, res) => {
             }
         });
 
-        res.status(201).json({
+        res.status(200).send({
             message: "Analytics data saved successfully",
-            analytics: response
-        });
+        })
     } catch(error){
         res.status(500).send({error: error.message, message: "Something went wrong"});
     }
