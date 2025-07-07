@@ -1,4 +1,6 @@
-import { PrismaClient } from "@prisma/client";
+import pkg from '@prisma/client';
+const { PrismaClient } = pkg;
+
 import mcqs from "../../../constants/questions.js";
 import { coding } from "../../../constants/codingquestions.js"
 const prisma = new PrismaClient();
